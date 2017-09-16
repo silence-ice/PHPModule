@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<!-- 
+	【下载地址和文档手册】：https://github.com/jeromeetienne/jquery-qrcode
+ -->
+<html>
+<head>
+	<title>qrcodeCreate</title>
+	<script type="text/javascript" src='./jquery-3.2.1.min.js'></script>
+	<script type="text/javascript" src='./jquery.qrcode.min.js'></script>
+</head>
+<body>
+	<div id="qrcode"></div>
+</body>
+
+<script type="text/javascript">
+	$('#qrcode').qrcode("http://www.baidu.com");
+	$('#qrcode').qrcode({width: 64,height: 64,text: "http://www.baidu.com"});
+</script>
+</html>

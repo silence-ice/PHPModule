@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>PHPExcel</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<style type="text/css">
+/* GitHub stylesheet for MarkdownPad (http://markdownpad.com) */
+/* Author: Nicolas Hery - http://nicolashery.com */
+/* Version: b13fe65ca28d2e568c6ed5d7f06581183df8f2ff */
+/* Source: https://github.com/nicolahery/markdownpad-github */
+
+/* RESET
+=============================================================================*/
+
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+/* BODY
+=============================================================================*/
+
+body {
+  font-family: Helvetica, arial, freesans, clean, sans-serif;
+  font-size: 14px;
+  line-height: 1.6;
+  color: #333;
+  background-color: #fff;
+  padding: 20px;
+}
+
+body>*:first-child {
+  margin-top: 0 !important;
+}
+
+body>*:last-child {
+  margin-bottom: 0 !important;
+}
+
+/* BLOCKS
+=============================================================================*/
+
+p, blockquote, ul, ol, dl, table, pre {
+  margin: 15px 0;
+}
+
+/* HEADERS
+=============================================================================*/
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 20px 0 10px;
+  padding: 0;
+  font-weight: bold;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1 tt, h1 code, h2 tt, h2 code, h3 tt, h3 code, h4 tt, h4 code, h5 tt, h5 code, h6 tt, h6 code {
+  font-size: inherit;
+}
+
+h1 {
+  font-size: 28px;
+  color: #000;
+}
+
+h2 {
+  font-size: 24px;
+  border-bottom: 1px solid #ccc;
+  color: #000;
+}
+
+h3 {
+  font-size: 18px;
+}
+
+h4 {
+  font-size: 16px;
+}
+
+h5 {
+  font-size: 14px;
+}
+
+h6 {
+  color: #777;
+  font-size: 14px;
+}
+
+body>h2:first-child, body>h1:first-child, body>h1:first-child+h2, body>h3:first-child, body>h4:first-child, body>h5:first-child, body>h6:first-child {
+  margin-top: 0;
+  padding-top: 0;
+}
+
+a:first-child h1, a:first-child h2, a:first-child h3, a:first-child h4, a:first-child h5, a:first-child h6 {
+  margin-top: 0;
+  padding-top: 0;
+}
+
+h1+p, h2+p, h3+p, h4+p, h5+p, h6+p {
+  margin-top: 10px;
+}
+
+/* LINKS
+=============================================================================*/
+
+a {
+  color: #4183C4;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* LISTS
+=============================================================================*/
+
+ul, ol {
+  padding-left: 30px;
+}
+
+ul li > :first-child, 
+ol li > :first-child, 
+ul li ul:first-of-type, 
+ol li ol:first-of-type, 
+ul li ol:first-of-type, 
+ol li ul:first-of-type {
+  margin-top: 0px;
+}
+
+ul ul, ul ol, ol ol, ol ul {
+  margin-bottom: 0;
+}
+
+dl {
+  padding: 0;
+}
+
+dl dt {
+  font-size: 14px;
+  font-weight: bold;
+  font-style: italic;
+  padding: 0;
+  margin: 15px 0 5px;
+}
+
+dl dt:first-child {
+  padding: 0;
+}
+
+dl dt>:first-child {
+  margin-top: 0px;
+}
+
+dl dt>:last-child {
+  margin-bottom: 0px;
+}
+
+dl dd {
+  margin: 0 0 15px;
+  padding: 0 15px;
+}
+
+dl dd>:first-child {
+  margin-top: 0px;
+}
+
+dl dd>:last-child {
+  margin-bottom: 0px;
+}
+
+/* CODE
+=============================================================================*/
+
+pre, code, tt {
+  font-size: 12px;
+  font-family: Consolas, "Liberation Mono", Courier, monospace;
+}
+
+code, tt {
+  margin: 0 0px;
+  padding: 0px 0px;
+  white-space: nowrap;
+  border: 1px solid #eaeaea;
+  background-color: #f8f8f8;
+  border-radius: 3px;
+}
+
+pre>code {
+  margin: 0;
+  padding: 0;
+  white-space: pre;
+  border: none;
+  background: transparent;
+}
+
+pre {
+  background-color: #f8f8f8;
+  border: 1px solid #ccc;
+  font-size: 13px;
+  line-height: 19px;
+  overflow: auto;
+  padding: 6px 10px;
+  border-radius: 3px;
+}
+
+pre code, pre tt {
+  background-color: transparent;
+  border: none;
+}
+
+kbd {
+    -moz-border-bottom-colors: none;
+    -moz-border-left-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-top-colors: none;
+    background-color: #DDDDDD;
+    background-image: linear-gradient(#F1F1F1, #DDDDDD);
+    background-repeat: repeat-x;
+    border-color: #DDDDDD #CCCCCC #CCCCCC #DDDDDD;
+    border-image: none;
+    border-radius: 2px 2px 2px 2px;
+    border-style: solid;
+    border-width: 1px;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    line-height: 10px;
+    padding: 1px 4px;
+}
+
+/* QUOTES
+=============================================================================*/
+
+blockquote {
+  border-left: 4px solid #DDD;
+  padding: 0 15px;
+  color: #191970;
+}
+
+blockquote>:first-child {
+  margin-top: 0px;
+}
+
+blockquote>:last-child {
+  margin-bottom: 0px;
+}
+
+/* HORIZONTAL RULES
+=============================================================================*/
+
+hr {
+  clear: both;
+  margin: 15px 0;
+  height: 0px;
+  overflow: hidden;
+  border: none;
+  background: transparent;
+  border-bottom: 4px solid #ddd;
+  padding: 0;
+}
+
+/* TABLES
+=============================================================================*/
+
+table th {
+  font-weight: bold;
+}
+
+table th, table td {
+  border: 1px solid #ccc;
+  padding: 6px 13px;
+}
+
+table tr {
+  border-top: 1px solid #ccc;
+  background-color: #fff;
+}
+
+table tr:nth-child(2n) {
+  background-color: #f8f8f8;
+}
+
+/* IMAGES
+=============================================================================*/
+
+img {
+  max-width: 100%
+}
+</style>
+</head>
+<body>
+<h1>PHPExcel</h1>
+<hr />
+<h3>什么是PHPExcel？</h3>
+<blockquote>
+<p>PHPExcel 是用来操作Office Excel 文档的一个PHP类库，它基于微软的OpenXML标准和PHP语言。</p>
+<p>可以使用它来读取、写入不同格式的电子表格，如 Excel (BIFF) .xls, Excel 2007 (OfficeOpenXML) .xlsx, CSV, Libre/OpenOffice Calc .ods, Gnumeric, PDF, HTML等等。</p>
+</blockquote>
+<h3>PHPExcel导出步骤</h3>
+<blockquote>
+<p>1.新建一个excel表格：实例化PHPExcel类</p>
+<p>2.创建sheet(内置表)</p>
+<blockquote>
+<p>createSheet()方法</p>
+<p>setActiveSheetIndex方法</p>
+<p>getActiveSheet方法</p>
+</blockquote>
+<p>3.填充数据</p>
+<blockquote>
+<p>setCellValue()方法</p>
+</blockquote>
+<p>4.保存文件</p>
+<blockquote>
+<p>PHPExcel_IOFactory::creayeWriter()方法</p>
+<p>save()方法</p>
+</blockquote>
+</blockquote>
+<h3>PHPExcel导出报表</h3>
+<blockquote>
+<p>简单写入数据，导出excel文件</p>
+</blockquote>
+<pre><code>public function index(){
+  Vendor('PHPExcel.PHPExcel');
+
+  //实例化PHPExcel对象,相当于新建一个excel表格,注意,不能少了\
+  $objPHPExcel = new \PHPExcel();
+  //获取当前活动sheet的操作对象
+  $objSheet = $objPHPExcel-&gt;getActiveSheet();
+  //给当前活动sheet设置名称
+  $objSheet-&gt;setTitle(&quot;demo&quot;);
+  //给当前sheet填充数据-mode1
+  $objSheet-&gt;setCellValue(&quot;A1&quot;,&quot;姓名&quot;)-&gt;setCellValue(&quot;B1&quot;,&quot;分数&quot;);
+  $objSheet-&gt;setCellValue(&quot;A2&quot;,&quot;黄斌&quot;)-&gt;setCellValue(&quot;B2&quot;,&quot;60&quot;);
+  //直接加载数据块来填充数据-mode2
+  //shortcoming1:如果数据量大的话不支持数据块存储,很容易产生内存不够的错误造成执行终端
+  //shortcoming2:无法给单元格设定样式
+  // $array = array(
+  //   array(),
+  //   array('','姓名','分数'),
+  //   array('','黄斌','60'),
+  //   array('','silence','60'),
+  // );
+  // $objSheet-&gt;fromArray($array);
+
+  //按照指定格式生成excel文件,注意,不能少了\
+  //生成xls后缀的文件-mode1
+  // $objWriter = \PHPExcel_IOFactory::createWriter($objPHPExcel, &quot;Excel5&quot;);
+  // $res = $objWriter-&gt;save($_SERVER['DOCUMENT_ROOT'].&quot;/data/excelDir&quot;.&quot;/demo1.xls&quot;);
+  //生成xls后缀的文件-mode2
+  $objWriter = \PHPExcel_IOFactory::createWriter($objPHPExcel, &quot;Excel2007&quot;);
+  $res = $objWriter-&gt;save($_SERVER['DOCUMENT_ROOT'].&quot;/data/excelDir&quot;.&quot;/demo1.xlsx&quot;);
+}
+</code></pre>
+
+<blockquote>
+<p>数据库读取数据，浏览器导出excel文件</p>
+</blockquote>
+<pre><code>/**
+ * 获取用户表数据(输出至浏览器)
+ * @param audit 1,审核通过;2,未通过
+ * @return array    
+ */
+public function browser_export($type, $filename){
+  if ($type == &quot;Excel5&quot;) {
+    //告诉浏览器输出excel03文件
+    header('Content-Type: application/vnd.ms-excel');
+  }else{
+    //告诉浏览器输出excel07文件
+    header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
+  }
+  //告诉浏览器将输出文件的名称
+  header('Content-Disposition: attachment;filename=&quot;'.$filename.'&quot;');
+  header('Cache-Control: max-age=0');//禁止缓存
+
+  // If you're serving to IE over SSL, then the following may be needed
+  // header ('Expires: Mon, 26 Jul 1997 05:00:00 GMT'); // Date in the past
+  // header ('Last-Modified: '.gmdate('D, d M Y H:i:s').' GMT'); // always modified
+  // header ('Cache-Control: cache, must-revalidate'); // HTTP/1.1
+  // header ('Pragma: public'); // HTTP/1.0
+}
+
+/**
+ * 导出EXCEL(用户表数据)
+ * @param null
+ * @return file
+ */
+public function expUserExcel(){
+  Vendor('PHPExcel.PHPExcel');
+
+  $objPHPExcel = new \PHPExcel();
+  //需要2个sheet表,因为默认会有一个sheet表,所以只需要创建一个
+  for ($i=1; $i &lt;=2 ; $i++) { 
+    if ($i&gt;1) {
+      $objPHPExcel-&gt;createSheet();
+    }
+    $objPHPExcel-&gt;setActiveSheetIndex($i-1);//选取sheet,默认从0开始
+    $objSheet = $objPHPExcel-&gt;getActiveSheet();//获取该sheet实例
+    $data = $this-&gt;getUserList($i);//$i=1表示审核通过的数据,$i=2表示审核未通过的数据
+
+    $i == 1 ? $objSheet-&gt;setTitle(&quot;审核通过&quot;) : $objSheet-&gt;setTitle(&quot;审核未通过&quot;);
+    $objSheet-&gt;getColumnDimension('B')-&gt;setWidth(10);//设置列宽
+    $objSheet-&gt;getColumnDimension('C')-&gt;setWidth(15);
+    $objSheet-&gt;getColumnDimension('D')-&gt;setWidth(20);
+    $objSheet-&gt;getColumnDimension('E')-&gt;setWidth(10);
+    $objSheet-&gt;getColumnDimension('F')-&gt;setWidth(10);
+    $objSheet
+    -&gt;setCellValue(&quot;A1&quot;,&quot;id&quot;)-&gt;setCellValue(&quot;B1&quot;,&quot;用户名&quot;)-&gt;setCellValue(&quot;C1&quot;,&quot;联系方式&quot;)
+    -&gt;setCellValue(&quot;D1&quot;,&quot;email&quot;)-&gt;setCellValue(&quot;E1&quot;,&quot;云主机定价&quot;)-&gt;setCellValue(&quot;F1&quot;,&quot;云磁盘定价&quot;);
+
+    $j=2;//从第二行开始
+    foreach ($data as $key =&gt; $val) {
+      $objSheet
+      -&gt;setCellValue(&quot;A&quot;.$j, $val[&quot;user_id&quot;])-&gt;setCellValue(&quot;B&quot;.$j, $val[&quot;user_name&quot;])
+      -&gt;setCellValue(&quot;C&quot;.$j, $val[&quot;tel&quot;])-&gt;setCellValue(&quot;D&quot;.$j, $val[&quot;email&quot;])
+      -&gt;setCellValue(&quot;E&quot;.$j, $val[&quot;rate&quot;])-&gt;setCellValue(&quot;F&quot;.$j, $val[&quot;disk_rate&quot;]);
+
+      $j++;
+    }
+  }
+  $objWriter = \PHPExcel_IOFactory::createWriter($objPHPExcel, &quot;Excel2007&quot;);
+  // $objWriter-&gt;save($_SERVER['DOCUMENT_ROOT'].&quot;/data/excelDir&quot;.&quot;/user.xlsx&quot;);
+  $this-&gt;browser_export(&quot;Excel5&quot;, &quot;browser_excel1.xlsx&quot;);
+  $objWriter-&gt;save(&quot;php://output&quot;);
+}
+</code></pre>
+
+<h3>PHPExcel生成折线图报表</h3>
+<blockquote>
+<p>1.只有Excel2007的格式才能生成图形报表</p>
+<p>2.图形报表实例都在PHPExcel_1.8.0_doc/Examples中</p>
+</blockquote>
+<pre><code>/**
+ * excel折线图图表
+ */
+public function chartExcel(){
+  Vendor('PHPExcel.PHPExcel');
+
+  $objPHPExcel = new \PHPExcel();
+  $objSheet = $objPHPExcel-&gt;getActiveSheet();
+
+  $array=array(
+      array(&quot;&quot;,&quot;一班&quot;,&quot;二班&quot;,&quot;三班&quot;),
+      array(&quot;不及格&quot;,20,30,40),
+      array(&quot;良好&quot;,30,50,55),
+      array(&quot;优秀&quot;,15,17,20)
+  );//准备数据
+  $objSheet-&gt;fromArray($array);//直接加载数组填充进单元格内
+
+  /* PHPExcel的API文档在/PHPExcel_1.8.0_doc/Documentation/API/classes */
+  //开始图表代码编写
+  $labels=array(
+    //取得绘制图表的标签
+    //param1:数据类型,param2:WorkSheet为特有写法
+    //param3:对应样式,一般为null,param4:取得数据的个数
+    new \PHPExcel_Chart_DataSeriesValues('String','Worksheet!$B$1',null,1),//一班
+    new \PHPExcel_Chart_DataSeriesValues('String','Worksheet!$C$1',null,1),//二班
+    new \PHPExcel_Chart_DataSeriesValues('String','Worksheet!$D$1',null,1),//三班
+  );
+
+  $xLabels=array(
+    //取得图表X轴的刻度,Y轴的数据PHPExcel会自动生成好
+    new \PHPExcel_Chart_DataSeriesValues('String','Worksheet!$A$2:$A$4',null,3)
+  );
+
+  $datas=array(
+    new \PHPExcel_Chart_DataSeriesValues('Number','Worksheet!$B$2:$B$4',null,3),//取一班的数据
+    new \PHPExcel_Chart_DataSeriesValues('Number','Worksheet!$C$2:$C$4',null,3),//取二班的数据
+    new \PHPExcel_Chart_DataSeriesValues('Number','Worksheet!$D$2:$D$4',null,3)//取三班的数据
+  );//取得绘图所需的数据
+
+  $series=array(
+    new \PHPExcel_Chart_DataSeries(
+      \PHPExcel_Chart_DataSeries::TYPE_LINECHART,//折线图
+      \PHPExcel_Chart_DataSeries::GROUPING_STANDARD,
+      range(0,count($labels)-1),
+      $labels,//图表标签
+      $xLabels,//X轴数据
+      $datas//图表数据
+    )
+  );//根据取得的东西做出一个图表的框架
+  $layout=new \PHPExcel_Chart_Layout();
+  $layout-&gt;setShowVal(true);//折线目标点显示数据注释
+  $areas=new \PHPExcel_Chart_PlotArea($layout,$series);
+  $legend=new \PHPExcel_Chart_Legend(\PHPExcel_Chart_Legend::POSITION_RIGHT,$layout,false);
+  $title=new \PHPExcel_Chart_Title(&quot;高一学生成绩分布&quot;);//图表标题
+  $ytitle=new \PHPExcel_Chart_Title(&quot;value(人数)&quot;);//Y轴注释
+  $chart=new \PHPExcel_Chart(
+    'line_chart',
+    $title,
+    $legend,
+    $areas,
+    true,
+    false,
+    null,
+    $ytitle
+  );//生成一个图标
+  $chart-&gt;setTopLeftPosition(&quot;A7&quot;)-&gt;setBottomRightPosition(&quot;K25&quot;);//给定图表所在表格中的位置
+
+  $objSheet-&gt;addChart($chart);//将chart添加到表格中
+
+  $objWriter=\PHPExcel_IOFactory::createWriter($objPHPExcel,'Excel2007');//生成excel文件
+  $objWriter-&gt;setIncludeCharts(true);//加载图表
+
+  $this-&gt;browser_export(&quot;Excel2007&quot;, &quot;chart_excel.xlsx&quot;);
+  $objWriter-&gt;save(&quot;php://output&quot;);
+}
+</code></pre>
+
+<h3>PHPExcel导入步骤</h3>
+<blockquote>
+<p>1.实例化excel读取对象</p>
+<p>2.加载excel文件</p>
+<p>3.读取excel文件</p>
+</blockquote>
+<h3>PHPExcel导入报表存储数据</h3>
+<pre><code>/**
+ * 导入Excel文件所有内容
+ */
+public function exportAllExcel(){
+  Vendor('PHPExcel.PHPExcel.IOFactory');
+
+  $filename =  $_SERVER['DOCUMENT_ROOT'].&quot;/thinkTest/data/excelDir&quot;.&quot;/demo2.xls&quot;;
+  $objPHPExcel = \PHPExcel_IOFactory::load($filename);//加载文件
+
+  // $sheetCount = $objPHPExcel-&gt;getSheetCount();//获取excel文件里有多少个sheet
+  // for($i=0; $i&lt;$sheetCount; $i++){
+  //   $data = $objPHPExcel-&gt;getSheet($i)-&gt;toArray();//读取每个sheet里的数据 全部放入到数组中
+  //   print_r($data);
+  // }
+
+  //PHPExcel自带的迭代器
+  foreach($objPHPExcel-&gt;getWorksheetIterator() as $sheet){//循环取sheet
+      foreach($sheet-&gt;getRowIterator() as $row){//逐行处理
+          if($row-&gt;getRowIndex()&lt;2){//控制行数输出,从第二行开始读取
+            continue;
+          }
+          foreach($row-&gt;getCellIterator() as $cell){//逐列读取
+              $data=$cell-&gt;getValue();//获取单元格数据
+              echo $data.&quot; &quot;;
+          }
+          echo '&lt;br/&gt;';
+      }
+      echo '&lt;br/&gt;';
+  }
+}
+</code></pre>
+
+<h3>注意</h3>
+<blockquote>
+<p>之前在线上环境发现无法导出excel，但是在测试环境是正常的，有可能是PHP环境模块的缺失导致的，有可能线上环境的PHPExcel类内部调用到特定的模块；对比之后发现线上业务环境缺失下面的模块，具体还不明确到底是缺少那个模块，全部添加后导出功能正常了：</p>
+<blockquote>
+<p>xmlreader<br />
+xmlwriter<br />
+Core<br />
+curl<br />
+iconv<br />
+ctype  
+</p>
+</blockquote>
+</blockquote>
+
+<p>1</p>
+</body>
+</html>
+<!-- This document was created with MarkdownPad, the Markdown editor for Windows (http://markdownpad.com) -->

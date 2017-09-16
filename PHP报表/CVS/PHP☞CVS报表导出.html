@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>PHP☞CVS报表导出</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<style type="text/css">
+/* GitHub stylesheet for MarkdownPad (http://markdownpad.com) */
+/* Author: Nicolas Hery - http://nicolashery.com */
+/* Version: b13fe65ca28d2e568c6ed5d7f06581183df8f2ff */
+/* Source: https://github.com/nicolahery/markdownpad-github */
+
+/* RESET
+=============================================================================*/
+
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+/* BODY
+=============================================================================*/
+
+body {
+  font-family: Helvetica, arial, freesans, clean, sans-serif;
+  font-size: 14px;
+  line-height: 1.6;
+  color: #333;
+  background-color: #fff;
+  padding: 20px;
+}
+
+body>*:first-child {
+  margin-top: 0 !important;
+}
+
+body>*:last-child {
+  margin-bottom: 0 !important;
+}
+
+/* BLOCKS
+=============================================================================*/
+
+p, blockquote, ul, ol, dl, table, pre {
+  margin: 15px 0;
+}
+
+/* HEADERS
+=============================================================================*/
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 20px 0 10px;
+  padding: 0;
+  font-weight: bold;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1 tt, h1 code, h2 tt, h2 code, h3 tt, h3 code, h4 tt, h4 code, h5 tt, h5 code, h6 tt, h6 code {
+  font-size: inherit;
+}
+
+h1 {
+  font-size: 28px;
+  color: #000;
+}
+
+h2 {
+  font-size: 24px;
+  border-bottom: 1px solid #ccc;
+  color: #000;
+}
+
+h3 {
+  font-size: 18px;
+}
+
+h4 {
+  font-size: 16px;
+}
+
+h5 {
+  font-size: 14px;
+}
+
+h6 {
+  color: #777;
+  font-size: 14px;
+}
+
+body>h2:first-child, body>h1:first-child, body>h1:first-child+h2, body>h3:first-child, body>h4:first-child, body>h5:first-child, body>h6:first-child {
+  margin-top: 0;
+  padding-top: 0;
+}
+
+a:first-child h1, a:first-child h2, a:first-child h3, a:first-child h4, a:first-child h5, a:first-child h6 {
+  margin-top: 0;
+  padding-top: 0;
+}
+
+h1+p, h2+p, h3+p, h4+p, h5+p, h6+p {
+  margin-top: 10px;
+}
+
+/* LINKS
+=============================================================================*/
+
+a {
+  color: #4183C4;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* LISTS
+=============================================================================*/
+
+ul, ol {
+  padding-left: 30px;
+}
+
+ul li > :first-child, 
+ol li > :first-child, 
+ul li ul:first-of-type, 
+ol li ol:first-of-type, 
+ul li ol:first-of-type, 
+ol li ul:first-of-type {
+  margin-top: 0px;
+}
+
+ul ul, ul ol, ol ol, ol ul {
+  margin-bottom: 0;
+}
+
+dl {
+  padding: 0;
+}
+
+dl dt {
+  font-size: 14px;
+  font-weight: bold;
+  font-style: italic;
+  padding: 0;
+  margin: 15px 0 5px;
+}
+
+dl dt:first-child {
+  padding: 0;
+}
+
+dl dt>:first-child {
+  margin-top: 0px;
+}
+
+dl dt>:last-child {
+  margin-bottom: 0px;
+}
+
+dl dd {
+  margin: 0 0 15px;
+  padding: 0 15px;
+}
+
+dl dd>:first-child {
+  margin-top: 0px;
+}
+
+dl dd>:last-child {
+  margin-bottom: 0px;
+}
+
+/* CODE
+=============================================================================*/
+
+pre, code, tt {
+  font-size: 12px;
+  font-family: Consolas, "Liberation Mono", Courier, monospace;
+}
+
+code, tt {
+  margin: 0 0px;
+  padding: 0px 0px;
+  white-space: nowrap;
+  border: 1px solid #eaeaea;
+  background-color: #f8f8f8;
+  border-radius: 3px;
+}
+
+pre>code {
+  margin: 0;
+  padding: 0;
+  white-space: pre;
+  border: none;
+  background: transparent;
+}
+
+pre {
+  background-color: #f8f8f8;
+  border: 1px solid #ccc;
+  font-size: 13px;
+  line-height: 19px;
+  overflow: auto;
+  padding: 6px 10px;
+  border-radius: 3px;
+}
+
+pre code, pre tt {
+  background-color: transparent;
+  border: none;
+}
+
+kbd {
+    -moz-border-bottom-colors: none;
+    -moz-border-left-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-top-colors: none;
+    background-color: #DDDDDD;
+    background-image: linear-gradient(#F1F1F1, #DDDDDD);
+    background-repeat: repeat-x;
+    border-color: #DDDDDD #CCCCCC #CCCCCC #DDDDDD;
+    border-image: none;
+    border-radius: 2px 2px 2px 2px;
+    border-style: solid;
+    border-width: 1px;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    line-height: 10px;
+    padding: 1px 4px;
+}
+
+/* QUOTES
+=============================================================================*/
+
+blockquote {
+  border-left: 4px solid #DDD;
+  padding: 0 15px;
+  color: #191970;
+}
+
+blockquote>:first-child {
+  margin-top: 0px;
+}
+
+blockquote>:last-child {
+  margin-bottom: 0px;
+}
+
+/* HORIZONTAL RULES
+=============================================================================*/
+
+hr {
+  clear: both;
+  margin: 15px 0;
+  height: 0px;
+  overflow: hidden;
+  border: none;
+  background: transparent;
+  border-bottom: 4px solid #ddd;
+  padding: 0;
+}
+
+/* TABLES
+=============================================================================*/
+
+table th {
+  font-weight: bold;
+}
+
+table th, table td {
+  border: 1px solid #ccc;
+  padding: 6px 13px;
+}
+
+table tr {
+  border-top: 1px solid #ccc;
+  background-color: #fff;
+}
+
+table tr:nth-child(2n) {
+  background-color: #f8f8f8;
+}
+
+/* IMAGES
+=============================================================================*/
+
+img {
+  max-width: 100%
+}
+</style>
+</head>
+<body>
+<h1>PHP☞CVS报表导出</h1>
+<hr />
+<h3>什么是CSV文件？</h3>
+<blockquote>
+<p>CSV，是Comma Separated Value（逗号分隔值）的英文缩写，通常都是纯文本文件。</p>
+<p>如果你导出的Excel没有什么高级用法的话，只是做导出数据用那么建议使用本方法,要比PHPexcel要高效的多。
+二十万数据导出大概需要2到3秒。</p>
+</blockquote>
+<h3>CSV文件导出缺点</h3>
+<blockquote>
+<p>CSV文件没有任何格式，不可设置列宽度、文字颜色、样式。</p>
+<p>CSV不可以创建多个Sheet。</p>
+</blockquote>
+<h3>解决乱码情况</h3>
+<blockquote>
+<p>通常以UTF8编码导出CSV文件，文件头需要添加BOM头，否则会显示乱码。</p>
+<p>有这个BOM头它就能识别到编码格式是UTF-8，否则识别不了用默认的GBK来处理，自然就是乱码。</p>
+<pre><code>$fp = fopen('php://output', 'a');
+fwrite($fp, chr(0xEF).chr(0xBB).chr(0xBF));
+</code></pre>
+
+<p>使用iconv函数进行转码为GBK</p>
+<p>缺点就是需要每个数组值进行转码</p>
+<pre><code>$arr['username'] = &quot;黄斌&quot;;
+$arr['username'] = iconv('utf-8', 'gbk', $arr['username']);
+</code></pre>
+
+</blockquote>
+<h3>fputcsv() 函数用法</h3>
+<blockquote>
+<p>定义和用法</p>
+<blockquote>
+<p>fputcsv() 函数将行格式化为 CSV 并写入一个打开的文件。</p>
+<p>该函数返回写入字符串的长度。若出错，则返回 false。。</p>
+</blockquote>
+<p>语法</p>
+<blockquote>
+<p>fputcsv(file,fields,seperator,enclosure)</p>
+</blockquote>
+<p>参数	描述</p>
+<pre><code>file    必需。规定要写入的打开文件。
+fields  必需。规定要从中获得数据的数组。
+seperator   可选。规定字段分隔符的字符。默认是逗号 (,)。
+enclosure   可选。规定字段环绕符的字符。默认是双引号 &quot;。
+</code></pre>
+
+</blockquote>
+<h3>代码示例</h3>
+<blockquote>
+<p>通过php://output向终端输出内容</p>
+</blockquote>
+<pre><code>&lt;?php
+header('Content-Type: application/csv');
+header('Content-Disposition: attachment; filename=&quot;test1.csv&quot;');
+
+$output = fopen('php://output','w') or die(&quot;Can't open php://output&quot;);
+fwrite($output, chr(0xEF).chr(0xBB).chr(0xBF));
+
+// 输出表头
+fputcsv($output, array('站点名', '域名', '行业'));
+
+//数据内容
+$rows = array(
+     array('天猫', 'http://tmall.com', '电子商务')
+    ,array('爱E族', 'http://aiezu.com', '互联网技术')
+    ,array('腾讯', 'http://qq.com', '社交网络')
+);
+
+foreach($rows as $val) {
+    fputcsv($output, $val);
+}
+fclose($output) or die(&quot;Can't close php://output&quot;);
+</code></pre>
+
+<h3>封装CSV函数</h3>
+<pre><code>&lt;?php
+$bodyData = array();   //声明空数组防止报错
+$bodyData[] = array (&quot;\t&quot;.&quot;651651616&quot;,'1','0');//&quot;\t&quot;防止转换成科学计数法
+$bodyData[] = array (&quot;\t&quot;.'651651616','1','0');
+
+$headerDate = array('PO单编号', '拣货方式', '自动补货');
+$fileName = 'huangbin';
+
+to_csv($fileName, $headerDate, $bodyData);
+
+
+function to_csv($file_name, $headerDate, $bodyData) {
+    header('Content-Type: application/csv');
+    header('Content-Disposition: attachment;filename=&quot;' . $file_name . '.csv&quot;');
+
+    $fp = fopen('php://output', 'a');
+
+    fwrite($fp, chr(0xEF).chr(0xBB).chr(0xBF));
+
+    fputcsv($fp, $headerDate);//导入表头数据
+
+    foreach($bodyData as $val) {
+        fputcsv($fp, $val);
+    }
+}
+</code></pre>
+
+<p>1</p>
+</body>
+</html>
+<!-- This document was created with MarkdownPad, the Markdown editor for Windows (http://markdownpad.com) -->

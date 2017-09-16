@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>微信公众号开发（十三）</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<style type="text/css">
+/* GitHub stylesheet for MarkdownPad (http://markdownpad.com) */
+/* Author: Nicolas Hery - http://nicolashery.com */
+/* Version: b13fe65ca28d2e568c6ed5d7f06581183df8f2ff */
+/* Source: https://github.com/nicolahery/markdownpad-github */
+
+/* RESET
+=============================================================================*/
+
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+/* BODY
+=============================================================================*/
+
+body {
+  font-family: Helvetica, arial, freesans, clean, sans-serif;
+  font-size: 14px;
+  line-height: 1.6;
+  color: #333;
+  background-color: #fff;
+  padding: 20px;
+}
+
+body>*:first-child {
+  margin-top: 0 !important;
+}
+
+body>*:last-child {
+  margin-bottom: 0 !important;
+}
+
+/* BLOCKS
+=============================================================================*/
+
+p, blockquote, ul, ol, dl, table, pre {
+  margin: 15px 0;
+}
+
+/* HEADERS
+=============================================================================*/
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 20px 0 10px;
+  padding: 0;
+  font-weight: bold;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1 tt, h1 code, h2 tt, h2 code, h3 tt, h3 code, h4 tt, h4 code, h5 tt, h5 code, h6 tt, h6 code {
+  font-size: inherit;
+}
+
+h1 {
+  font-size: 28px;
+  color: #000;
+}
+
+h2 {
+  font-size: 24px;
+  border-bottom: 1px solid #ccc;
+  color: #000;
+}
+
+h3 {
+  font-size: 18px;
+}
+
+h4 {
+  font-size: 16px;
+}
+
+h5 {
+  font-size: 14px;
+}
+
+h6 {
+  color: #777;
+  font-size: 14px;
+}
+
+body>h2:first-child, body>h1:first-child, body>h1:first-child+h2, body>h3:first-child, body>h4:first-child, body>h5:first-child, body>h6:first-child {
+  margin-top: 0;
+  padding-top: 0;
+}
+
+a:first-child h1, a:first-child h2, a:first-child h3, a:first-child h4, a:first-child h5, a:first-child h6 {
+  margin-top: 0;
+  padding-top: 0;
+}
+
+h1+p, h2+p, h3+p, h4+p, h5+p, h6+p {
+  margin-top: 10px;
+}
+
+/* LINKS
+=============================================================================*/
+
+a {
+  color: #4183C4;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* LISTS
+=============================================================================*/
+
+ul, ol {
+  padding-left: 30px;
+}
+
+ul li > :first-child, 
+ol li > :first-child, 
+ul li ul:first-of-type, 
+ol li ol:first-of-type, 
+ul li ol:first-of-type, 
+ol li ul:first-of-type {
+  margin-top: 0px;
+}
+
+ul ul, ul ol, ol ol, ol ul {
+  margin-bottom: 0;
+}
+
+dl {
+  padding: 0;
+}
+
+dl dt {
+  font-size: 14px;
+  font-weight: bold;
+  font-style: italic;
+  padding: 0;
+  margin: 15px 0 5px;
+}
+
+dl dt:first-child {
+  padding: 0;
+}
+
+dl dt>:first-child {
+  margin-top: 0px;
+}
+
+dl dt>:last-child {
+  margin-bottom: 0px;
+}
+
+dl dd {
+  margin: 0 0 15px;
+  padding: 0 15px;
+}
+
+dl dd>:first-child {
+  margin-top: 0px;
+}
+
+dl dd>:last-child {
+  margin-bottom: 0px;
+}
+
+/* CODE
+=============================================================================*/
+
+pre, code, tt {
+  font-size: 12px;
+  font-family: Consolas, "Liberation Mono", Courier, monospace;
+}
+
+code, tt {
+  margin: 0 0px;
+  padding: 0px 0px;
+  white-space: nowrap;
+  border: 1px solid #eaeaea;
+  background-color: #f8f8f8;
+  border-radius: 3px;
+}
+
+pre>code {
+  margin: 0;
+  padding: 0;
+  white-space: pre;
+  border: none;
+  background: transparent;
+}
+
+pre {
+  background-color: #f8f8f8;
+  border: 1px solid #ccc;
+  font-size: 13px;
+  line-height: 19px;
+  overflow: auto;
+  padding: 6px 10px;
+  border-radius: 3px;
+}
+
+pre code, pre tt {
+  background-color: transparent;
+  border: none;
+}
+
+kbd {
+    -moz-border-bottom-colors: none;
+    -moz-border-left-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-top-colors: none;
+    background-color: #DDDDDD;
+    background-image: linear-gradient(#F1F1F1, #DDDDDD);
+    background-repeat: repeat-x;
+    border-color: #DDDDDD #CCCCCC #CCCCCC #DDDDDD;
+    border-image: none;
+    border-radius: 2px 2px 2px 2px;
+    border-style: solid;
+    border-width: 1px;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    line-height: 10px;
+    padding: 1px 4px;
+}
+
+/* QUOTES
+=============================================================================*/
+
+blockquote {
+  border-left: 4px solid #DDD;
+  padding: 0 15px;
+  color: #191970;
+}
+
+blockquote>:first-child {
+  margin-top: 0px;
+}
+
+blockquote>:last-child {
+  margin-bottom: 0px;
+}
+
+/* HORIZONTAL RULES
+=============================================================================*/
+
+hr {
+  clear: both;
+  margin: 15px 0;
+  height: 0px;
+  overflow: hidden;
+  border: none;
+  background: transparent;
+  border-bottom: 4px solid #ddd;
+  padding: 0;
+}
+
+/* TABLES
+=============================================================================*/
+
+table th {
+  font-weight: bold;
+}
+
+table th, table td {
+  border: 1px solid #ccc;
+  padding: 6px 13px;
+}
+
+table tr {
+  border-top: 1px solid #ccc;
+  background-color: #fff;
+}
+
+table tr:nth-child(2n) {
+  background-color: #f8f8f8;
+}
+
+/* IMAGES
+=============================================================================*/
+
+img {
+  max-width: 100%
+}
+</style>
+</head>
+<body>
+<h1>微信公众号开发（十三）</h1>
+<hr />
+<h2>JS-SDK：</h2>
+<h3>JS-SDK使用步骤：</h3>
+<blockquote>
+<p>1.1 步骤一：绑定域名    
+</p>
+<blockquote>
+<p>1.先登录微信公众平台进入“公众号设置”的“功能设置”里填写“JS接口安全域名”。<br />
+2.这里的填写的必须是域名，<strong>不能是IP</strong>。</p>
+</blockquote>
+<p>1.2 步骤二：引入JS文件  
+</p>
+<blockquote>
+<p>在需要调用JS接口的页面引入如下JS文件，（支持https）：<code>http://res.wx.qq.com/open/js/jweixin-1.0.0.js</code></p>
+</blockquote>
+<p>1.3 步骤三：通过config接口注入权限验证配置  
+</p>
+<blockquote>
+<p>所有需要使用JS-SDK的页面必须先注入配置信息，否则将无法调用</p>
+<pre><code>wx.config({
+    debug: true, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，
+    若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
+    appId: '', // 必填，公众号的唯一标识
+    timestamp: , // 必填，生成签名的时间戳
+    nonceStr: '', // 必填，生成签名的随机串
+    signature: '',// 必填，签名，见附录1
+    jsApiList: [] // 必填，需要使用的JS接口列表，所有JS接口列表见附录2
+});
+</code></pre>
+
+</blockquote>
+<p>1.4 步骤四：通过ready接口处理成功验证  
+</p>
+<blockquote>
+<pre><code>wx.ready(function(){
+    1.config信息验证后会执行ready方法.
+    2.所有接口调用都必须在config接口获得结果之后，config是一个客户端的异步操作
+    3.所以如果需要在页面加载时就调用相关接口，则须把相关接口放在ready函数中调用来确保正确执行。
+    4.对于用户触发时才调用的接口，则可以直接调用，不需要放在ready函数中。
+});
+</code></pre>
+
+</blockquote>
+<p>1.5 步骤五：通过error接口处理失败验证</p>
+<blockquote>
+<pre><code>wx.error(function(res){
+    1.config信息验证失败会执行error函数
+    2.如签名过期导致验证失败，具体错误信息可以打开config的debug模式查看
+      也可以在返回的res参数中查看，对于SPA可以在这里更新签名。
+});
+</code></pre>
+
+</blockquote>
+</blockquote>
+<h3>获取jsapi_ticket</h3>
+<blockquote>
+<p>1.生成签名之前必须先了解一下jsapi_ticket，jsapi_ticket是公众号用于调用微信JS接口的临时票据。  
+</p>
+<p>2.正常情况下，jsapi_ticket的有效期为7200秒，通过access_token来获取。  
+</p>
+<p>3.由于获取jsapi_ticket的api调用次数非常有限，频繁刷新jsapi_ticket会导致api调用受限，影响自身业务，开发者必须在自己的服务全局缓存jsapi_ticket 。  
+</p>
+</blockquote>
+<p>成功返回如下JSON：</p>
+<pre><code>{
+&quot;errcode&quot;:0,
+&quot;errmsg&quot;:&quot;ok&quot;,
+&quot;ticket&quot;:&quot;bxLdikRXVbTPdHSM05e5u5sUoXNKd8-41ZO3MhKoyN5OfkWITDGgnr2fwJ0m9E8NYzWKVZvdVtaUgWvsdshFKA&quot;,
+&quot;expires_in&quot;:7200
+}
+</code></pre>
+
+<h3>签名算法生成</h3>
+<blockquote>
+<p>参与签名的字段:  
+</p>
+<blockquote>
+<p>参与签名的字段包括noncestr（随机字符串）.<br />
+有效的jsapi_ticket<br />
+timestamp（时间戳）<br />
+url（当前网页的URL，不包含#及其后面部分） 。</p>
+</blockquote>
+<p>1.对所有待签名参数按照字段名的ASCII 码从小到大排序（字典序）后，使用URL键值对的格式（即key1=value1&amp;key2=value2…）拼接成字符串string1。<br />
+2.这里需要注意的是所有参数名均为小写字符。对string1作sha1加密，字段名和字段值都采用原始值，不进行URL转义。</p>
+</blockquote>
+<h3>代码示例：</h3>
+<blockquote>
+<p>控制器代码：</p>
+</blockquote>
+<pre><code>  //获取AccessToken
+  public function getWxAccessToken(){
+    //防止外人调用的token
+    // if($_GET['token'] != &quot;huangbin0236&quot;){
+    //   echo &quot;token error&quot;;
+    //   exit;
+    // }
+
+    $appid = 'wxeb8f9fcfff86fac1';
+    $appsecret = 'd4624c36b6795d1d99dcf0547af5443d';
+    $url = &quot;https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&amp;appid=&quot;.$appid.&quot;&amp;secret=&quot;.$appsecret;
+    // var_dump($url);die;
+    $res = $this-&gt;http_curl($url, &quot;get&quot;, &quot;json&quot;);
+
+    //access_token保存到session
+    $_SESSION['access_token'] = $res['access_token'];
+    $_SESSION['expire_time'] = time()+7200;
+
+    return $res['access_token'];
+  }
+
+ public function http_curl($url,$type='get',$res='json',$arr=''){
+
+       //1.初始化curl
+       $ch  =curl_init();
+       //2.设置curl的参数
+       curl_setopt($ch,CURLOPT_URL,$url);
+       curl_setopt($ch,CURLOPT_RETURNTRANSFER,1);
+          curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false); // 跳过证书检查  
+
+      curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, false); 
+       if($type == 'post'){
+           curl_setopt($ch,CURLOPT_POST,1);
+           curl_setopt($ch,CURLOPT_POSTFIELDS,$arr);
+       }
+       //3.采集
+       $output =curl_exec($ch);
+       echo (curl_error($ch));
+       //4.关闭
+       curl_close($ch);
+       if($res=='json'){
+           if(curl_error($ch)){
+               //请求失败，返回错误信息
+
+               return curl_error($ch);
+           }else{
+               //请求成功，返回错误信息
+
+               return json_decode($output,true);
+           }
+       }
+       echo var_dump( $output );
+   }
+
+//获取jsapi_ticket
+public function getJsApi_Ticket(){
+    if (isset($_SESSION['jsapi_ticket']) &amp;&amp; $_SESSION['jsapi_ticket_expire_time']&gt;time()) {
+      $jsapi_ticket = $_SESSION['jsapi_ticket'];
+    }else{
+        //1.获取access_token
+        if (isset($_SESSION['access_token']) &amp;&amp; $_SESSION['expire_time']&gt;time()) {
+          $access_token = $_SESSION['access_token'];
+        }else{
+          $access_token = $this-&gt;getWxAccessToken();
+        }
+
+        //2.获取jsapi_ticket
+        $url = &quot;https://api.weixin.qq.com/cgi-bin/ticket/getticket?access_token=&quot;.$access_token.&quot;&amp;type=jsapi&quot;;
+        $res = $this-&gt;http_curl($url, 'get');
+        $jsapi_ticket = $res['ticket'];
+
+        $_SESSION['jsapi_ticket'] = $jsapi_ticket;
+        $_SESSION['jsapi_ticket_expire_time'] = time()+7200;
+    }
+    return $jsapi_ticket;
+
+}
+
+//获取16位随机码
+public  function getRangeCode(){
+    $num=16;
+    $array=array(
+        'A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z',
+        'a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z',
+        '0','1','2','3','4','5','6','7','8','9'
+    );
+    $tmpstr='';
+    $max=count($array);
+    for($i=1;$i&lt;=$num;$i++){
+        $key = rand(0,$max-1);
+        $tmpstr.=$array[$key];
+    };
+    return $tmpstr;
+}
+
+//微信JS-SDK【分享朋友圈】
+public function share(){
+    $app_id = &quot;wxeb8f9fcfff86fac1&quot;;
+    $timestamp = time();
+    //1.生成签名的随机串
+    $jsapi_ticket = $this-&gt;getJsApi_Ticket();
+    $nonceStr = $this-&gt;getRangeCode();
+    // $url = &quot;http://www.bestsilence.top/Blog/index.php/Home/Index/share&quot;;
+    $protocol = (!empty($_SERVER[HTTPS]) &amp;&amp; $_SERVER[HTTPS] !== off || $_SERVER[SERVER_PORT] == 443) ? &quot;https://&quot; : &quot;http://&quot;;
+    $url = $protocol.$_SERVER[HTTP_HOST].$_SERVER[REQUEST_URI];
+
+    //签名
+    $signature = &quot;jsapi_ticket=&quot;.$jsapi_ticket.&quot;&amp;noncestr=&quot;.$nonceStr.&quot;&amp;timestamp=&quot;.$timestamp.&quot;&amp;url=&quot;.$url;
+    $sha1_signature = sha1($signature);
+
+    $this-&gt;assign(&quot;username&quot;, &quot;silence&quot;);
+    $this-&gt;assign(&quot;jsapi_ticket&quot;, $jsapi_ticket);
+
+
+    $this-&gt;assign(&quot;app_id&quot;, $app_id);
+    $this-&gt;assign(&quot;timestamp&quot;, $timestamp);
+    $this-&gt;assign(&quot;nonceStr&quot;, $nonceStr);
+    $this-&gt;assign(&quot;sha1_signature&quot;, $sha1_signature);
+
+    // var_dump($url, $jsapi_ticket, $app_id, $timestamp, $nonceStr, $sha1_signature);die;
+    $this-&gt;display();
+}
+</code></pre>
+
+<blockquote>
+<p>tpl代码：</p>
+<pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;!-- head头部分开始 --&gt;
+&lt;head&gt;
+    &lt;include file=&quot;Public/public_head&quot; title=&quot;{$article['current']['title']}-&quot;  keywords=&quot;{$article['current']['keywords']}&quot; description=&quot;{$article['current']['description']}&quot; /&gt;
+    &lt;css file=&quot;__PUBLIC__/static/ueditor1_4_3/third-party/SyntaxHighlighter/shCoreDefault.css&quot; /&gt;
+    &lt;link rel=&quot;canonical&quot; href=&quot;{:U('Home/Index/article',array('aid'=&gt;$_GET['aid']),'',true)}&quot; /&gt;
+&lt;/head&gt;
+&lt;!-- head头部分结束 --&gt;
+&lt;body&gt;
+&lt;!-- 顶部导航开始 --&gt;
+&lt;include file=&quot;Public/public_nav&quot; /&gt;
+&lt;!-- 顶部导航结束 --&gt;
+&lt;div class=&quot;b-h-70&quot;&gt;&lt;/div&gt;
+&lt;!-- 主体部分开始 --&gt;
+&lt;div id=&quot;b-content&quot; class=&quot;container&quot;&gt;
+    &lt;div class=&quot;row&quot;&gt;
+    123
+    {$username}520
+    {$app_id}520
+    {$timestamp}520
+    {$sha1_signature}520
+    {$jsapi_ticket}520      
+    &lt;/div&gt;
+    &lt;button onclick=&quot;show();&quot;&gt;选择相册图片&lt;/button&gt;
+    &lt;div class=&quot;row&quot;&gt;
+        &lt;!-- 底部文件开始 --&gt;
+        &lt;include file=&quot;Public/public_foot&quot; /&gt;
+        &lt;!-- 通用底部文件结束 --&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+&lt;!-- 主体部分结束 --&gt;
+&lt;!-- 登录框开始 --&gt;
+&lt;include file=&quot;Public/public_login&quot; /&gt;
+&lt;!-- 登录框结束 --&gt;
+&lt;!-- JS-SDK开始 --&gt;
+&lt;script type=&quot;text/javascript&quot; src=&quot;http://res.wx.qq.com/open/js/jweixin-1.0.0.js&quot;&gt;&lt;/script&gt;
+&lt;script type=&quot;text/javascript&quot;&gt;
+    wx.config({
+        debug: true, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
+        appId: '{$app_id}', // 必填，公众号的唯一标识
+        timestamp: '{$timestamp}', // 必填，生成签名的时间戳
+        nonceStr: '{$nonceStr}', // 必填，生成签名的随机串
+        signature: '{$sha1_signature}',// 必填，签名，见附录1
+        jsApiList: ['onMenuShareTimeline','onMenuShareAppMessage','chooseImage'] // 必填，需要使用的JS接口列表，所有JS接口列表见附录2
+    });
+
+    wx.ready(function(){
+        wx.onMenuShareTimeline({
+            title: '分享至朋友圈', // 分享标题
+            link: 'http://www.bestsilence.top/Blog', // 分享链接
+            imgUrl: 'http://www.bestsilence.top/Blog/Upload/image/ueditor/20170404/1491275842800369.jpg', // 分享图标
+            success: function () { 
+                // 用户确认分享后执行的回调函数
+                alert(&quot;success&quot;);
+            },
+            cancel: function () { 
+                // 用户取消分享后执行的回调函数
+                alert(&quot;cancle&quot;);
+            }
+        });
+
+        wx.onMenuShareAppMessage({
+            title: '分享至朋友', // 分享标题
+            desc: '测试', // 分享描述
+            link: 'http://www.bestsilence.top/Blog', // 分享链接
+            imgUrl: 'http://www.bestsilence.top/Blog/Upload/image/ueditor/20170404/1491275842800369.jpg', // 分享图标
+            type: 'link', // 分享类型,music、video或link，不填默认为link
+            dataUrl: '', // 如果type是music或video，则要提供数据链接，默认为空
+            success: function () { 
+                // 用户确认分享后执行的回调函数
+                alert(&quot;share success&quot;);
+            },
+            cancel: function () { 
+                // 用户取消分享后执行的回调函数
+                alert(&quot;share error&quot;);
+            }
+        });
+
+    });
+
+    wx.error(function(res){
+        alert(&quot;error&quot;);
+    });
+
+    function show(){
+        wx.chooseImage({
+            count: 1, // 默认9
+            sizeType: ['original', 'compressed'], // 可以指定是原图还是压缩图，默认二者都有
+            sourceType: ['album', 'camera'], // 可以指定来源是相册还是相机，默认二者都有
+            success: function (res) {
+                var localIds = res.localIds; // 返回选定照片的本地ID列表，localId可以作为img标签的src属性显示图片
+            }
+        });        
+    }
+&lt;/script&gt;
+&lt;!-- JS-SDK结束 --&gt;
+
+&lt;js file=&quot;__PUBLIC__/static/ueditor1_4_3/third-party/SyntaxHighlighter/shCore.js&quot; /&gt;
+&lt;js file=&quot;__PUBLIC__/static/layer-2.4/layer.js&quot; /&gt;
+&lt;script type=&quot;text/javascript&quot;&gt;
+    SyntaxHighlighter.all();
+    ajaxCommentUrl=&quot;{:U('Home/Index/ajax_comment','','',true)}&quot;;
+    check_login=&quot;{:U('Home/User/check_login','','',true)}&quot;;
+&lt;/script&gt;
+&lt;js file=&quot;__HOME_JS__/comment.js&quot; /&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+
+</blockquote>
+<h3>代码注意事项：</h3>
+<blockquote>
+<p>1.可以在<strong>草料二维码</strong>处生成二维码进行调试，形如：
+<code>http://www.bestsilence.top/Blog/Home/Index/share</code></p>
+<p>2.可以在微信 JS 接口签名校验工具处和代码对比输出的signature是否一致，地址为：<br />
+<code>https://mp.weixin.qq.com/debug/cgi-bin/sandbox?t=jsapisign</code></p>
+<p>3.curl取消ssl安全机制：  
+</p>
+<blockquote>
+<p>1.配置curl是否使用ssl的带证书(https协议)访问,一般我们是没有安装证书的(http协议),所以将true改为false可以了<br />
+2.具体可以看代码中http_curl方法。</p>
+</blockquote>
+<pre><code>curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);    
+curl_setopt($curl, CURLOPT_SSL_VERIFYHOST, false);
+</code></pre>
+
+</blockquote>
+<p>1</p>
+</body>
+</html>
+<!-- This document was created with MarkdownPad, the Markdown editor for Windows (http://markdownpad.com) -->

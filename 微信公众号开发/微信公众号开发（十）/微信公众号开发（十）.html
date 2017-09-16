@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>微信公众号开发（十）</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<style type="text/css">
+/* GitHub stylesheet for MarkdownPad (http://markdownpad.com) */
+/* Author: Nicolas Hery - http://nicolashery.com */
+/* Version: b13fe65ca28d2e568c6ed5d7f06581183df8f2ff */
+/* Source: https://github.com/nicolahery/markdownpad-github */
+
+/* RESET
+=============================================================================*/
+
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+/* BODY
+=============================================================================*/
+
+body {
+  font-family: Helvetica, arial, freesans, clean, sans-serif;
+  font-size: 14px;
+  line-height: 1.6;
+  color: #333;
+  background-color: #fff;
+  padding: 20px;
+}
+
+body>*:first-child {
+  margin-top: 0 !important;
+}
+
+body>*:last-child {
+  margin-bottom: 0 !important;
+}
+
+/* BLOCKS
+=============================================================================*/
+
+p, blockquote, ul, ol, dl, table, pre {
+  margin: 15px 0;
+}
+
+/* HEADERS
+=============================================================================*/
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 20px 0 10px;
+  padding: 0;
+  font-weight: bold;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1 tt, h1 code, h2 tt, h2 code, h3 tt, h3 code, h4 tt, h4 code, h5 tt, h5 code, h6 tt, h6 code {
+  font-size: inherit;
+}
+
+h1 {
+  font-size: 28px;
+  color: #000;
+}
+
+h2 {
+  font-size: 24px;
+  border-bottom: 1px solid #ccc;
+  color: #000;
+}
+
+h3 {
+  font-size: 18px;
+}
+
+h4 {
+  font-size: 16px;
+}
+
+h5 {
+  font-size: 14px;
+}
+
+h6 {
+  color: #777;
+  font-size: 14px;
+}
+
+body>h2:first-child, body>h1:first-child, body>h1:first-child+h2, body>h3:first-child, body>h4:first-child, body>h5:first-child, body>h6:first-child {
+  margin-top: 0;
+  padding-top: 0;
+}
+
+a:first-child h1, a:first-child h2, a:first-child h3, a:first-child h4, a:first-child h5, a:first-child h6 {
+  margin-top: 0;
+  padding-top: 0;
+}
+
+h1+p, h2+p, h3+p, h4+p, h5+p, h6+p {
+  margin-top: 10px;
+}
+
+/* LINKS
+=============================================================================*/
+
+a {
+  color: #4183C4;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* LISTS
+=============================================================================*/
+
+ul, ol {
+  padding-left: 30px;
+}
+
+ul li > :first-child, 
+ol li > :first-child, 
+ul li ul:first-of-type, 
+ol li ol:first-of-type, 
+ul li ol:first-of-type, 
+ol li ul:first-of-type {
+  margin-top: 0px;
+}
+
+ul ul, ul ol, ol ol, ol ul {
+  margin-bottom: 0;
+}
+
+dl {
+  padding: 0;
+}
+
+dl dt {
+  font-size: 14px;
+  font-weight: bold;
+  font-style: italic;
+  padding: 0;
+  margin: 15px 0 5px;
+}
+
+dl dt:first-child {
+  padding: 0;
+}
+
+dl dt>:first-child {
+  margin-top: 0px;
+}
+
+dl dt>:last-child {
+  margin-bottom: 0px;
+}
+
+dl dd {
+  margin: 0 0 15px;
+  padding: 0 15px;
+}
+
+dl dd>:first-child {
+  margin-top: 0px;
+}
+
+dl dd>:last-child {
+  margin-bottom: 0px;
+}
+
+/* CODE
+=============================================================================*/
+
+pre, code, tt {
+  font-size: 12px;
+  font-family: Consolas, "Liberation Mono", Courier, monospace;
+}
+
+code, tt {
+  margin: 0 0px;
+  padding: 0px 0px;
+  white-space: nowrap;
+  border: 1px solid #eaeaea;
+  background-color: #f8f8f8;
+  border-radius: 3px;
+}
+
+pre>code {
+  margin: 0;
+  padding: 0;
+  white-space: pre;
+  border: none;
+  background: transparent;
+}
+
+pre {
+  background-color: #f8f8f8;
+  border: 1px solid #ccc;
+  font-size: 13px;
+  line-height: 19px;
+  overflow: auto;
+  padding: 6px 10px;
+  border-radius: 3px;
+}
+
+pre code, pre tt {
+  background-color: transparent;
+  border: none;
+}
+
+kbd {
+    -moz-border-bottom-colors: none;
+    -moz-border-left-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-top-colors: none;
+    background-color: #DDDDDD;
+    background-image: linear-gradient(#F1F1F1, #DDDDDD);
+    background-repeat: repeat-x;
+    border-color: #DDDDDD #CCCCCC #CCCCCC #DDDDDD;
+    border-image: none;
+    border-radius: 2px 2px 2px 2px;
+    border-style: solid;
+    border-width: 1px;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    line-height: 10px;
+    padding: 1px 4px;
+}
+
+/* QUOTES
+=============================================================================*/
+
+blockquote {
+  border-left: 4px solid #DDD;
+  padding: 0 15px;
+  color: #191970;
+}
+
+blockquote>:first-child {
+  margin-top: 0px;
+}
+
+blockquote>:last-child {
+  margin-bottom: 0px;
+}
+
+/* HORIZONTAL RULES
+=============================================================================*/
+
+hr {
+  clear: both;
+  margin: 15px 0;
+  height: 0px;
+  overflow: hidden;
+  border: none;
+  background: transparent;
+  border-bottom: 4px solid #ddd;
+  padding: 0;
+}
+
+/* TABLES
+=============================================================================*/
+
+table th {
+  font-weight: bold;
+}
+
+table th, table td {
+  border: 1px solid #ccc;
+  padding: 6px 13px;
+}
+
+table tr {
+  border-top: 1px solid #ccc;
+  background-color: #fff;
+}
+
+table tr:nth-child(2n) {
+  background-color: #f8f8f8;
+}
+
+/* IMAGES
+=============================================================================*/
+
+img {
+  max-width: 100%
+}
+</style>
+</head>
+<body>
+<h1>微信公众号开发（十）</h1>
+<hr />
+<h2>网页授权：</h2>
+<h3>网页授权流程分为四步：</h3>
+<blockquote>
+<p>1、引导用户进入授权页面同意授权，获取code<br />
+2、通过code换取网页授权access_token（与基础支持中的access_token不同）<br />
+3、如果需要，开发者可以刷新网页授权access_token，避免过期<br />
+4、通过网页授权access_token和openid获取用户基本信息（支持UnionID机制）  
+</p>
+</blockquote>
+<h3>step1☞用户同意授权，获取code：</h3>
+<blockquote>
+<p>请求URL：<br />
+<code>https://open.weixin.qq.com/connect/qrconnect?appid=APPID&amp;redirect_uri=REDIRECT_URI&amp;response_type=code&amp;scope=SCOPE&amp;state=STATE#wechat_redirect</code></p>
+<blockquote>
+<p>1.appid：公众号的唯一标识  
+</p>
+<p>2.redirect_uri：授权后重定向的回调链接地址，请使用urlencode对链接进行处理</p>
+<p>3.response_type：返回类型，请填写code  
+</p>
+<p>4.scope；应用授权作用域  
+</p>
+<blockquote>
+<p>1.snsapi_base （不弹出授权页面，直接跳转，只能获取用户openid） <br />
+2.snsapi_userinfo （弹出授权页面，可通过openid拿到昵称、性别、所在地。并且，即使在未关注的情况下，只要用户授权，也能获取其信息  ）  
+</p>
+</blockquote>
+<p>5.stat；重定向后会带上state参数，开发者可以填写a-zA-Z0-9的参数值，最多128字节  
+</p>
+<p>6.wechat_redirect：无论直接打开还是做页面302重定向时候，必须带此参数</p>
+</blockquote>
+<p>授权响应后:<br />
+1.如果用户同意授权，页面将跳转至 redirect_uri/?code=CODE&amp;state=STATE。  
+</p>
+<p>2.若用户禁止授权，则重定向后不会带上code参数，仅会带上state参数redirect_uri?state=STATE    
+</p>
+<p>3.code说明：code作为换取access_token的票据，每次用户授权带上的code将不一样，code只能使用一次，5分钟未被使用自动过期。  
+</p>
+</blockquote>
+<h3>step2☞通过code换取网页授权access_token：</h3>
+<blockquote>
+<p>请求URL：<br />
+<code>https://api.weixin.qq.com/sns/oauth2/access_token?appid=APPID&amp;secret=SECRET&amp;code=CODE&amp;grant_type=authorization_code</code></p>
+<blockquote>
+<p>1.appid：公众号的唯一标识<br />
+2.secret：公众号的appsecret<br />
+3.code：填写第一步获取的code参数<br />
+4.code：填写为authorization_code  
+</p>
+</blockquote>
+<pre><code>正确时返回的JSON数据包如下：
+{
+   &quot;access_token&quot;:&quot;ACCESS_TOKEN&quot;,
+   &quot;expires_in&quot;:7200,
+   &quot;refresh_token&quot;:&quot;REFRESH_TOKEN&quot;,
+   &quot;openid&quot;:&quot;OPENID&quot;,
+   &quot;scope&quot;:&quot;SCOPE&quot;
+}
+
+参数  描述
+access_token    网页授权接口调用凭证,注意：此access_token与基础支持的access_token不同
+expires_in  access_token接口调用凭证超时时间，单位（秒）
+refresh_token   用户刷新access_token
+openid  用户唯一标识，请注意，在未关注公众号时，用户访问公众号的网页，也会产生一个用户和公众号唯一的OpenID
+scope   用户授权的作用域，使用逗号（,）分隔
+</code></pre>
+
+</blockquote>
+<h3>step3☞刷新access_token（如果需要）</h3>
+<blockquote>
+<p>请求URL：<br />
+<code>https://api.weixin.qq.com/sns/oauth2/refresh_token?appid=APPID&amp;grant_type=refresh_token&amp;refresh_token=REFRESH_TOKEN</code></p>
+<blockquote>
+<p>1.appid：公众号的唯一标识<br />
+2.grant_type：	填写为refresh_token<br />
+3.refresh_token：填写通过access_token获取到的refresh_token参数  
+</p>
+</blockquote>
+<pre><code>正确时返回的JSON数据包如下：
+{
+   &quot;access_token&quot;:&quot;ACCESS_TOKEN&quot;,
+   &quot;expires_in&quot;:7200,
+   &quot;refresh_token&quot;:&quot;REFRESH_TOKEN&quot;,
+   &quot;openid&quot;:&quot;OPENID&quot;,
+   &quot;scope&quot;:&quot;SCOPE&quot;
+}
+
+参数  描述
+access_token    网页授权接口调用凭证,注意：此access_token与基础支持的access_token不同
+expires_in  access_token接口调用凭证超时时间，单位（秒）
+refresh_token   用户刷新access_token
+openid  用户唯一标识
+scope   用户授权的作用域，使用逗号（,）分隔
+</code></pre>
+
+</blockquote>
+<h3>step4☞拉取用户信息(需scope为 snsapi_userinfo)</h3>
+<blockquote>
+<p>请求URL：<br />
+<code>https://api.weixin.qq.com/sns/userinfo?access_token=ACCESS_TOKEN&amp;openid=OPENID&amp;lang=zh_CN</code></p>
+<blockquote>
+<p>1.access_token：网页授权接口调用凭证,注意：此access_token与基础支持的access_token不同<br />
+2.openid：	用户的唯一标识<br />
+3.lang：返回国家地区语言版本，zh_CN 简体，zh_TW 繁体，en 英语  
+</p>
+</blockquote>
+<pre><code>正确时返回的JSON数据包如下：
+{
+   &quot;openid&quot;:&quot; OPENID&quot;,
+   &quot; nickname&quot;: NICKNAME,
+   &quot;sex&quot;:&quot;1&quot;,
+   &quot;province&quot;:&quot;PROVINCE&quot;
+   &quot;city&quot;:&quot;CITY&quot;,
+   &quot;country&quot;:&quot;COUNTRY&quot;,
+    &quot;headimgurl&quot;:    &quot;http://wx.qlogo.cn/mmopen/g3MonUZtNHkdmzicIlibx6iaFqAc56vxLSUfpb6n5WKSYVY0ChQKkiaJSgQ1dZuTOgvLLrhJbERQQ4eMsv84eavHiaiceqxibJxCfHe/46&quot;, 
+    &quot;privilege&quot;:[
+    &quot;PRIVILEGE1&quot;
+    &quot;PRIVILEGE2&quot;
+    ],
+    &quot;unionid&quot;: &quot;o6_bmasdasdsad6_2sgVt7hMZOPfL&quot;
+}
+
+参数  描述
+openid  用户的唯一标识
+nickname    用户昵称
+sex 用户的性别，值为1时是男性，值为2时是女性，值为0时是未知
+province    用户个人资料填写的省份
+city    普通用户个人资料填写的城市
+country 国家，如中国为CN
+headimgurl  用户头像，最后一个数值代表正方形头像大小（有0、46、64、96、132数值可选，0代表640*640正方形头像），用户没有头像时该项为空。若用户更换头像，原有头像URL将失效。
+privilege   用户特权信息，json 数组，如微信沃卡用户为（chinaunicom）
+unionid 只有在用户将公众号绑定到微信开放平台帐号后，才会出现该字段。详见：获取用户个人信息（UnionID机制）
+</code></pre>
+
+</blockquote>
+<h3>实现步骤</h3>
+<h4>修改授权回调URL：</h4>
+<blockquote>
+<p>在测试账号的测试号管理——&gt;体验接口权限表——&gt;网页服务——&gt;网页帐号——&gt;网页授权获取用户基本信息   
+</p>
+<p>【注意】：<br />
+1.这里填写的域名不能带http。<br />
+2.只需要填写域名，不可以把网站项目目录带上去！！<br />
+3.形如：www.bestsilence.top</p>
+</blockquote>
+<h3>获取微信用户简单信息☞代码示例：</h3>
+<pre><code>  //网页授权【获取简单信息】
+  public function getWebGrant(){
+    //1.获取code
+    $appid = &quot;wxeb8f9fcfff8hb6fac1&quot;;
+    $REDIRECT_URI = urlencode(&quot;http://www.bestsilence.top/Blog/Admin/WeiXin/WebGrantCallBack&quot;);
+    $SCOPE = &quot;snsapi_base&quot;;
+    $STATE = &quot;silence&quot;;
+    $url = &quot;https://open.weixin.qq.com/connect/oauth2/authorize?appid=&quot;.$appid.&quot;&amp;redirect_uri=&quot;.$REDIRECT_URI.&quot;&amp;response_type=code&amp;scope=&quot;.$SCOPE.&quot;&amp;state=&quot;.$STATE.&quot;#wechat_redirect&quot;;
+
+    header('location:'.$url);
+  }
+
+  //网页授权回调【获取简单信息】
+  public function WebGrantCallBack(){
+    //2.获取到网页授权的token
+    $appid = &quot;wxeb8f9fcfff8hb6fac1&quot;;
+    $SECRET = &quot;d4624c36ccb6795d1dd99dcf0547af544312dxd&quot;;
+    $code = $_GET['code'];
+
+    $url = &quot;https://api.weixin.qq.com/sns/oauth2/access_token?appid=&quot;.$appid.&quot;&amp;secret=&quot;.$SECRET.&quot;&amp;code=&quot;.$code.&quot;&amp;grant_type=authorization_code&quot;;
+
+    //3.拉去用户的openid
+    $res = $this-&gt;http_curl($url, &quot;get&quot;);
+    // print_r($res);//获取回调内容
+
+    // 其中open id是微信用户的全局唯一标识码
+    echo $res['openid'];
+  }
+</code></pre>
+
+<h4>生成二维码：</h4>
+<blockquote>
+<p>1.可以通过<strong>草料二维码</strong>生成一个授权二维码   <br />
+2.形如：<code>http://www.bestsilence.top/Blog/Api/WX/1haveWebGrant</code></p>
+</blockquote>
+<h4>返回回调内容：</h4>
+<pre><code>array(5) {
+ [&quot;access_token&quot;]=&gt; string(107) &quot;7sWoPuvvDEjh-P9F8WhM7hyAl29U5YQbwuwx5ubY-u4yuRGr2QvqWGWuucopcwxq5JEViM1BuBl8GgW6NwweDTVG60LKf6OjjL4QWmrRevo&quot; 
+ [&quot;expires_in&quot;]=&gt; int(7200) 
+ [&quot;refresh_token&quot;]=&gt; string(107) &quot;0YHBdovvrrcM4AjCyljUPuoLEr2cDw21F98sqwJ8m6RWXLqKnazLDNqNCJfLGy0nKu6cvW4FLl8bSZQm6Sdu56ZRyXxMyJLr90dxnh8UEZ4&quot; 
+ [&quot;openid&quot;]=&gt; string(28) &quot;o4hiXwGS-JJOmyAoQgq4d8aiiSaQ&quot; 
+ [&quot;scope&quot;]=&gt; string(11) &quot;snsapi_base&quot; 
+}
+</code></pre>
+
+<h3>获取微信用户详细信息☞代码示例：</h3>
+<pre><code>  //网页授权【获取详细信息】
+  public function getWebGrantDetail(){
+    //1.获取code
+    $appid = &quot;wxeb8f9fcfff8hb6fac1&quot;;
+    $REDIRECT_URI = urlencode(&quot;http://www.bestsilence.top/Blog/Admin/WeiXin/WebGratCallHbDetail&quot;);
+    $SCOPE = &quot;snsapi_userinfo&quot;;
+    $STATE = &quot;silence&quot;;
+    $url = &quot;https://open.weixin.qq.com/connect/oauth2/authorize?appid=&quot;.$appid.&quot;&amp;redirect_uri=&quot;.$REDIRECT_URI.&quot;&amp;response_type=code&amp;scope=&quot;.$SCOPE.&quot;&amp;state=&quot;.$STATE.&quot;#wechat_redirect&quot;;
+
+    header('location:'.$url);
+  }
+
+  //网页授权回调【获取详细信息】
+  public function WebGratCallHbDetail(){
+    //2.获取到网页授权的token
+    $appid = &quot;wxeb8f9fcfff8hb6fac1&quot;;
+    $SECRET = &quot;d4624c36ccb6795d1dd99dcf0547af544312dxd&quot;;
+    $code = $_GET['code'];
+
+    $url = &quot;https://api.weixin.qq.com/sns/oauth2/access_token?appid=&quot;.$appid.&quot;&amp;secret=&quot;.$SECRET.&quot;&amp;code=&quot;.$code.&quot;&amp;grant_type=authorization_code&quot;;
+
+    //3.拉去用户的openid
+    $res = $this-&gt;http_curl($url, &quot;get&quot;);
+    // print_r($res);//获取回调内容
+
+    // 其中open id是微信用户的全局唯一标识码
+    $openid = $res['openid'];
+    $access_token = $res['access_token'];
+
+    $user_url = &quot;https://api.weixin.qq.com/sns/userinfo?access_token=&quot;.$access_token.&quot;&amp;openid=&quot;.$openid.&quot;&amp;lang=zh_CN&quot;;
+
+    $res = $this-&gt;http_curl($user_url, &quot;get&quot;);
+    var_dump($res);
+  }
+</code></pre>
+
+<h4>生成二维码：</h4>
+<blockquote>
+<p>1.可以通过<strong>草料二维码</strong>生成一个授权二维码   <br />
+2.形如：<code>http://www.bestsilence.top/Blog/Api/WX/haveWebGrant11</code></p>
+</blockquote>
+<h4>返回回调内容：</h4>
+<pre><code>array(9) { 
+  [&quot;openid&quot;]=&gt; string(28) &quot;o4hiXwGS-JJOmyAoQgq4d8aiiSaQ&quot; 
+  [&quot;nickname&quot;]=&gt; string(9) &quot;silence..&quot; 
+  [&quot;sex&quot;]=&gt; int(1) 
+  [&quot;language&quot;]=&gt; string(5) &quot;zh_CN&quot; 
+  [&quot;city&quot;]=&gt; string(6) &quot;佛山&quot; 
+  [&quot;province&quot;]=&gt; string(6) &quot;广东&quot; 
+  [&quot;country&quot;]=&gt; string(6) &quot;中国&quot; 
+  [&quot;headimgurl&quot;]=&gt; string(130) &quot;http://wx.qlogo.cn/mmopen/icRzYxX49JSEyibhlh6ZfVHQu0RuKd2icS52ticeK1E4vjSwHAjBuPVYRgElqzW06mTnPlvibuGicTWK4s148BsGgHOXTStYQO6ob6/0&quot; 
+  [&quot;privilege&quot;]=&gt; array(0) { } 
+}
+</code></pre>
+
+<p>1</p>
+</body>
+</html>
+<!-- This document was created with MarkdownPad, the Markdown editor for Windows (http://markdownpad.com) -->

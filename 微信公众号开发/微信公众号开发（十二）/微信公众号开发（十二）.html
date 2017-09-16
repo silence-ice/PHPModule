@@ -1,0 +1,682 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>微信公众号开发（十三）</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<style type="text/css">
+/* GitHub stylesheet for MarkdownPad (http://markdownpad.com) */
+/* Author: Nicolas Hery - http://nicolashery.com */
+/* Version: b13fe65ca28d2e568c6ed5d7f06581183df8f2ff */
+/* Source: https://github.com/nicolahery/markdownpad-github */
+
+/* RESET
+=============================================================================*/
+
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+/* BODY
+=============================================================================*/
+
+body {
+  font-family: Helvetica, arial, freesans, clean, sans-serif;
+  font-size: 14px;
+  line-height: 1.6;
+  color: #333;
+  background-color: #fff;
+  padding: 20px;
+}
+
+body>*:first-child {
+  margin-top: 0 !important;
+}
+
+body>*:last-child {
+  margin-bottom: 0 !important;
+}
+
+/* BLOCKS
+=============================================================================*/
+
+p, blockquote, ul, ol, dl, table, pre {
+  margin: 15px 0;
+}
+
+/* HEADERS
+=============================================================================*/
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 20px 0 10px;
+  padding: 0;
+  font-weight: bold;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1 tt, h1 code, h2 tt, h2 code, h3 tt, h3 code, h4 tt, h4 code, h5 tt, h5 code, h6 tt, h6 code {
+  font-size: inherit;
+}
+
+h1 {
+  font-size: 28px;
+  color: #000;
+}
+
+h2 {
+  font-size: 24px;
+  border-bottom: 1px solid #ccc;
+  color: #000;
+}
+
+h3 {
+  font-size: 18px;
+}
+
+h4 {
+  font-size: 16px;
+}
+
+h5 {
+  font-size: 14px;
+}
+
+h6 {
+  color: #777;
+  font-size: 14px;
+}
+
+body>h2:first-child, body>h1:first-child, body>h1:first-child+h2, body>h3:first-child, body>h4:first-child, body>h5:first-child, body>h6:first-child {
+  margin-top: 0;
+  padding-top: 0;
+}
+
+a:first-child h1, a:first-child h2, a:first-child h3, a:first-child h4, a:first-child h5, a:first-child h6 {
+  margin-top: 0;
+  padding-top: 0;
+}
+
+h1+p, h2+p, h3+p, h4+p, h5+p, h6+p {
+  margin-top: 10px;
+}
+
+/* LINKS
+=============================================================================*/
+
+a {
+  color: #4183C4;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* LISTS
+=============================================================================*/
+
+ul, ol {
+  padding-left: 30px;
+}
+
+ul li > :first-child, 
+ol li > :first-child, 
+ul li ul:first-of-type, 
+ol li ol:first-of-type, 
+ul li ol:first-of-type, 
+ol li ul:first-of-type {
+  margin-top: 0px;
+}
+
+ul ul, ul ol, ol ol, ol ul {
+  margin-bottom: 0;
+}
+
+dl {
+  padding: 0;
+}
+
+dl dt {
+  font-size: 14px;
+  font-weight: bold;
+  font-style: italic;
+  padding: 0;
+  margin: 15px 0 5px;
+}
+
+dl dt:first-child {
+  padding: 0;
+}
+
+dl dt>:first-child {
+  margin-top: 0px;
+}
+
+dl dt>:last-child {
+  margin-bottom: 0px;
+}
+
+dl dd {
+  margin: 0 0 15px;
+  padding: 0 15px;
+}
+
+dl dd>:first-child {
+  margin-top: 0px;
+}
+
+dl dd>:last-child {
+  margin-bottom: 0px;
+}
+
+/* CODE
+=============================================================================*/
+
+pre, code, tt {
+  font-size: 12px;
+  font-family: Consolas, "Liberation Mono", Courier, monospace;
+}
+
+code, tt {
+  margin: 0 0px;
+  padding: 0px 0px;
+  white-space: nowrap;
+  border: 1px solid #eaeaea;
+  background-color: #f8f8f8;
+  border-radius: 3px;
+}
+
+pre>code {
+  margin: 0;
+  padding: 0;
+  white-space: pre;
+  border: none;
+  background: transparent;
+}
+
+pre {
+  background-color: #f8f8f8;
+  border: 1px solid #ccc;
+  font-size: 13px;
+  line-height: 19px;
+  overflow: auto;
+  padding: 6px 10px;
+  border-radius: 3px;
+}
+
+pre code, pre tt {
+  background-color: transparent;
+  border: none;
+}
+
+kbd {
+    -moz-border-bottom-colors: none;
+    -moz-border-left-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-top-colors: none;
+    background-color: #DDDDDD;
+    background-image: linear-gradient(#F1F1F1, #DDDDDD);
+    background-repeat: repeat-x;
+    border-color: #DDDDDD #CCCCCC #CCCCCC #DDDDDD;
+    border-image: none;
+    border-radius: 2px 2px 2px 2px;
+    border-style: solid;
+    border-width: 1px;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    line-height: 10px;
+    padding: 1px 4px;
+}
+
+/* QUOTES
+=============================================================================*/
+
+blockquote {
+  border-left: 4px solid #DDD;
+  padding: 0 15px;
+  color: #191970;
+}
+
+blockquote>:first-child {
+  margin-top: 0px;
+}
+
+blockquote>:last-child {
+  margin-bottom: 0px;
+}
+
+/* HORIZONTAL RULES
+=============================================================================*/
+
+hr {
+  clear: both;
+  margin: 15px 0;
+  height: 0px;
+  overflow: hidden;
+  border: none;
+  background: transparent;
+  border-bottom: 4px solid #ddd;
+  padding: 0;
+}
+
+/* TABLES
+=============================================================================*/
+
+table th {
+  font-weight: bold;
+}
+
+table th, table td {
+  border: 1px solid #ccc;
+  padding: 6px 13px;
+}
+
+table tr {
+  border-top: 1px solid #ccc;
+  background-color: #fff;
+}
+
+table tr:nth-child(2n) {
+  background-color: #f8f8f8;
+}
+
+/* IMAGES
+=============================================================================*/
+
+img {
+  max-width: 100%
+}
+</style>
+</head>
+<body>
+<h1>微信公众号开发（十二）</h1>
+<hr />
+<h2>生成带参数的二维码：</h2>
+<h3>带参数的二维码：</h3>
+<blockquote>
+<p>1、为了满足用户渠道推广分析和用户帐号绑定等场景的需要，即可以知道扫码的用户是通过什么渠道来的，所以公众平台提供了生成带参数二维码的接口。<br />
+2、使用该接口可以获得多个带不同场景值的二维码，用户扫描后，公众号可以接收到事件推送。 </p>
+</blockquote>
+<h3>二维码的类型：</h3>
+<blockquote>
+<p>1、临时二维码，是有过期时间的，最长可以设置为在二维码生成后的30天（即2592000秒）后过期，但能够生成较多数量。临时二维码主要用于帐号绑定等不要求二维码永久保存的业务场景<br />
+2、永久二维码，是无过期时间的，但数量较少（目前为最多10万个）。永久二维码主要用于适用于帐号绑定、用户来源统计等场景。</p>
+</blockquote>
+<h3>场景实现：</h3>
+<blockquote>
+<p>用户扫描带场景值二维码时，可能推送以下两种事件：  
+</p>
+<blockquote>
+<p>1.如果用户还未关注公众号，则用户可以关注公众号，关注后微信会将带场景值关注事件推送给开发者。<br />
+2.如果用户已经关注公众号，在用户扫描后会自动进入会话，微信也会将带场景值扫描事件推送给开发者。</p>
+</blockquote>
+</blockquote>
+<h3>生产带参数的二维码步骤：</h3>
+<blockquote>
+<p>获取带参数的二维码的过程包括两步，首先创建二维码ticket，然后凭借ticket到指定URL换取二维码。</p>
+</blockquote>
+<h3>创建二维码ticket:</h3>
+<blockquote>
+<p>临时二维码请求说明  
+</p>
+<blockquote>
+<pre><code>http请求方式: POST
+URL: https://api.weixin.qq.com/cgi-bin/qrcode/create?access_token=TOKEN
+POST数据格式：json
+POST数据例子：{&quot;expire_seconds&quot;: 604800, &quot;action_name&quot;: &quot;QR_SCENE&quot;, &quot;action_info&quot;: {&quot;scene&quot;: {&quot;scene_id&quot;: 123}}}
+</code></pre>
+
+</blockquote>
+<p>永久二维码请求说明  
+</p>
+<blockquote>
+<pre><code>http请求方式: POST
+URL: https://api.weixin.qq.com/cgi-bin/qrcode/create?access_token=TOKEN
+POST数据格式：json
+POST数据例子：{&quot;action_name&quot;: &quot;QR_LIMIT_SCENE&quot;, &quot;action_info&quot;: {&quot;scene&quot;: {&quot;scene_id&quot;: 123}}}
+或者也可以使用以下POST数据创建字符串形式的二维码参数：
+{&quot;action_name&quot;: &quot;QR_LIMIT_STR_SCENE&quot;, &quot;action_info&quot;: {&quot;scene&quot;: {&quot;scene_str&quot;: &quot;123&quot;}}}
+</code></pre>
+
+</blockquote>
+<p>参数说明</p>
+<blockquote>
+<pre><code>参数  说明
+expire_seconds  该二维码有效时间，以秒为单位。 最大不超过2592000（即30天），此字段如果不填，则默认有效期为30秒。
+action_name 二维码类型，QR_SCENE为临时,QR_LIMIT_SCENE为永久,QR_LIMIT_STR_SCENE为永久的字符串参数值
+action_info 二维码详细信息
+scene_id    场景值ID，临时二维码时为32位非0整型，永久二维码时最大值为100000（目前参数只支持1--100000）
+scene_str   场景值ID（字符串形式的ID），字符串类型，长度限制为1到64，仅永久二维码支持此字段
+</code></pre>
+
+</blockquote>
+</blockquote>
+<h3>通过ticket换取二维码</h3>
+<blockquote>
+<p>获取二维码ticket后，开发者可用ticket换取二维码图片。请注意，本接口无须登录态即可调用。</p>
+<p>请求说明</p>
+<blockquote>
+<pre><code>HTTP GET请求（请使用https协议）
+https://mp.weixin.qq.com/cgi-bin/showqrcode?ticket=TICKET
+提醒：TICKET记得进行UrlEncode
+</code></pre>
+
+</blockquote>
+<p>返回说明</p>
+<blockquote>
+<pre><code>ticket正确情况下，http 返回码是200，是一张图片，可以直接展示或者下载。
+
+HTTP头（示例）如下：
+Accept-Ranges:bytes
+Cache-control:max-age=604800
+Connection:keep-alive
+Content-Length:28026
+Content-Type:image/jpg
+Date:Wed, 16 Oct 2013 06:37:10 GMT
+Expires:Wed, 23 Oct 2013 14:37:10 +0800
+Server:nginx/1.4.1
+</code></pre>
+
+</blockquote>
+</blockquote>
+<h3>代码示例【临时二维码】</h3>
+<pre><code>  //生成带参数的二维码【二维码】
+  public function getWeiXinTicket(){
+    // 1.获取access_token
+    if (isset($_SESSION['access_token']) &amp;&amp; $_SESSION['expire_time']&gt;time()) {
+      $access_token = $_SESSION['access_token'];
+    }else{
+      $access_token = $this-&gt;getWxAccessToken();
+    }  
+
+    $url = &quot;https://api.weixin.qq.com/cgi-bin/qrcode/create?access_token=&quot;.$access_token;  
+    //2.组装数据
+    /*
+    //临时二维码
+    {
+      &quot;expire_seconds&quot;: 604800, 
+      &quot;action_name&quot;: &quot;QR_SCENE&quot;, 
+      &quot;action_info&quot;: {
+        &quot;scene&quot;: {&quot;scene_id&quot;: 123}
+      }
+    }
+    */
+    // $arr = array(
+    //   &quot;expire_seconds&quot; =&gt; 604800,
+    //   &quot;action_name&quot; =&gt; &quot;QR_SCENE&quot;,
+    //   &quot;action_info&quot; =&gt; array(
+    //     &quot;scene&quot; =&gt; array(
+    //         &quot;scene_id&quot; =&gt; 19
+    //       )
+    //     )
+    //   );
+
+    /*
+    //永久二维码
+    {
+      &quot;action_name&quot;: &quot;QR_LIMIT_SCENE&quot;, 
+      &quot;action_info&quot;: {
+        &quot;scene&quot;: {&quot;scene_id&quot;: 123}
+      }
+    }
+    */
+    $arr = array(
+      &quot;action_name&quot; =&gt; &quot;QR_LIMIT_SCENE&quot;,
+      &quot;action_info&quot; =&gt; array(
+        &quot;scene&quot; =&gt; array(
+            &quot;scene_id&quot; =&gt; 20
+          )
+        )
+      );
+
+    //3.将数组转成JSON
+    $json = json_encode($arr);
+    $res = $this-&gt;http_curl($url, &quot;post&quot;, &quot;json&quot;, $json);
+    // var_dump($res);die;
+    /*
+    //临时二维码
+    { 
+      [&quot;ticket&quot;]=&gt; string(96) &quot;gQHK7zwAAAAAAAAAAS5odHRwOi8vd2VpeGluLnFxLmNvbS9xLzAyWDF3X2RpeW9lbjAxVFpNSU5vMTQAAgR9NuNYAwSAOgkA&quot; 
+      [&quot;expire_seconds&quot;]=&gt; int(604800) 
+      [&quot;url&quot;]=&gt; string(45) &quot;http://weixin.qq.com/q/02X1w_diyoen01TZMINo14&quot; 
+    }
+    */
+
+    /*
+    //永久二维码    
+    { 
+      [&quot;ticket&quot;]=&gt; string(96) &quot;gQGX8DwAAAAAAAAAAS5odHRwOi8vd2VpeGluLnFxLmNvbS9xLzAyLVFPS2NyeW9lbjAxMDAwMHcwM0sAAgQwOeNYAwQAAAAA&quot; 
+      [&quot;url&quot;]=&gt; string(45) &quot;http://weixin.qq.com/q/02-QOKcryoen010000w03K&quot; 
+    }
+    */
+
+    //4.获取ticket票据
+    $ticket = $res['ticket'];
+    $qrcode_url = &quot;https://mp.weixin.qq.com/cgi-bin/showqrcode?ticket=&quot;.urlencode($ticket);
+    //5.展示图片
+    echo &quot;&lt;img src='&quot;.$qrcode_url.&quot;'/&gt;&quot;;
+  }
+</code></pre>
+
+<h3>扫描带参数二维码事件：</h3>
+<blockquote>
+<p>用户扫描带场景值二维码时，可能推送以下两种事件：</p>
+<blockquote>
+<p>如果用户还未关注公众号，则用户可以关注公众号，关注后微信会将带场景值关注事件推送给开发者。<br />
+如果用户已经关注公众号，则微信会将带场景值扫描事件推送给开发者。  
+</p>
+</blockquote>
+<p>【注意】：只有扫带参数的二维码才有事件推送  
+</p>
+</blockquote>
+<h3>事件推送参数说明</h3>
+<pre><code>1. 用户未关注时，进行关注后的事件推送
+
+推送XML数据包示例：
+
+&lt;xml&gt;&lt;ToUserName&gt;&lt;![CDATA[toUser]]&gt;&lt;/ToUserName&gt;
+&lt;FromUserName&gt;&lt;![CDATA[FromUser]]&gt;&lt;/FromUserName&gt;
+&lt;CreateTime&gt;123456789&lt;/CreateTime&gt;
+&lt;MsgType&gt;&lt;![CDATA[event]]&gt;&lt;/MsgType&gt;
+&lt;Event&gt;&lt;![CDATA[subscribe]]&gt;&lt;/Event&gt;
+&lt;EventKey&gt;&lt;![CDATA[qrscene_123123]]&gt;&lt;/EventKey&gt;
+&lt;Ticket&gt;&lt;![CDATA[TICKET]]&gt;&lt;/Ticket&gt;
+&lt;/xml&gt;
+参数说明：
+
+参数  描述
+ToUserName  开发者微信号
+FromUserName    发送方帐号（一个OpenID）
+CreateTime  消息创建时间 （整型）
+MsgType 消息类型，event
+Event   事件类型，subscribe
+EventKey    事件KEY值，qrscene_为前缀，后面为二维码的参数值
+Ticket  二维码的ticket，可用来换取二维码图片
+2. 用户已关注时的事件推送
+
+推送XML数据包示例：
+
+&lt;xml&gt;
+&lt;ToUserName&gt;&lt;![CDATA[toUser]]&gt;&lt;/ToUserName&gt;
+&lt;FromUserName&gt;&lt;![CDATA[FromUser]]&gt;&lt;/FromUserName&gt;
+&lt;CreateTime&gt;123456789&lt;/CreateTime&gt;
+&lt;MsgType&gt;&lt;![CDATA[event]]&gt;&lt;/MsgType&gt;
+&lt;Event&gt;&lt;![CDATA[SCAN]]&gt;&lt;/Event&gt;
+&lt;EventKey&gt;&lt;![CDATA[SCENE_VALUE]]&gt;&lt;/EventKey&gt;
+&lt;Ticket&gt;&lt;![CDATA[TICKET]]&gt;&lt;/Ticket&gt;
+&lt;/xml&gt;
+
+参数说明：
+
+参数  描述
+ToUserName  开发者微信号
+FromUserName    发送方帐号（一个OpenID）
+CreateTime  消息创建时间 （整型）
+MsgType 消息类型，event
+Event   事件类型，SCAN
+EventKey    事件KEY值，是一个32位无符号整数，即创建二维码时的二维码scene_id
+Ticket  二维码的ticket，可用来换取二维码图片
+</code></pre>
+
+<h3>代码示例</h3>
+<pre><code>  //生成带参数的二维码【二维码】
+  public function getWeiXinTicket(){
+    // 1.获取access_token
+    if (isset($_SESSION['access_token']) &amp;&amp; $_SESSION['expire_time']&gt;time()) {
+      $access_token = $_SESSION['access_token'];
+    }else{
+      $access_token = $this-&gt;getWxAccessToken();
+    }  
+
+    $url = &quot;https://api.weixin.qq.com/cgi-bin/qrcode/create?access_token=&quot;.$access_token;  
+    //2.组装数据
+    /*
+    //临时二维码
+    {
+      &quot;expire_seconds&quot;: 604800, 
+      &quot;action_name&quot;: &quot;QR_SCENE&quot;, 
+      &quot;action_info&quot;: {
+        &quot;scene&quot;: {&quot;scene_id&quot;: 123}
+      }
+    }
+    */
+    // $arr = array(
+    //   &quot;expire_seconds&quot; =&gt; 604800,
+    //   &quot;action_name&quot; =&gt; &quot;QR_SCENE&quot;,
+    //   &quot;action_info&quot; =&gt; array(
+    //     &quot;scene&quot; =&gt; array(
+    //         &quot;scene_id&quot; =&gt; 19
+    //       )
+    //     )
+    //   );
+
+    /*
+    //永久二维码
+    {
+      &quot;action_name&quot;: &quot;QR_LIMIT_SCENE&quot;, 
+      &quot;action_info&quot;: {
+        &quot;scene&quot;: {&quot;scene_id&quot;: 123}
+      }
+    }
+    */
+    $arr = array(
+      &quot;action_name&quot; =&gt; &quot;QR_LIMIT_SCENE&quot;,
+      &quot;action_info&quot; =&gt; array(
+        &quot;scene&quot; =&gt; array(
+            &quot;scene_id&quot; =&gt; 20
+          )
+        )
+      );
+
+    //3.将数组转成JSON
+    $json = json_encode($arr);
+    $res = $this-&gt;http_curl($url, &quot;post&quot;, &quot;json&quot;, $json);
+    // var_dump($res);die;
+    /*
+    //临时二维码
+    { 
+      [&quot;ticket&quot;]=&gt; string(96) &quot;gQHK7zwAAAAAAAAAAS5odHRwOi8vd2VpeGluLnFxLmNvbS9xLzAyWDF3X2RpeW9lbjAxVFpNSU5vMTQAAgR9NuNYAwSAOgkA&quot; 
+      [&quot;expire_seconds&quot;]=&gt; int(604800) 
+      [&quot;url&quot;]=&gt; string(45) &quot;http://weixin.qq.com/q/02X1w_diyoen01TZMINo14&quot; 
+    }
+    */
+
+    /*
+    //永久二维码    
+    { 
+      [&quot;ticket&quot;]=&gt; string(96) &quot;gQGX8DwAAAAAAAAAAS5odHRwOi8vd2VpeGluLnFxLmNvbS9xLzAyLVFPS2NyeW9lbjAxMDAwMHcwM0sAAgQwOeNYAwQAAAAA&quot; 
+      [&quot;url&quot;]=&gt; string(45) &quot;http://weixin.qq.com/q/02-QOKcryoen010000w03K&quot; 
+    }
+    */
+
+    //4.获取ticket票据
+    $ticket = $res['ticket'];
+    $qrcode_url = &quot;https://mp.weixin.qq.com/cgi-bin/showqrcode?ticket=&quot;.urlencode($ticket);
+    //5.展示图片
+    echo &quot;&lt;img src='&quot;.$qrcode_url.&quot;'/&gt;&quot;;
+  }
+</code></pre>
+
+<h3>扫描带二维码事件的推送</h3>
+<h3>参数说明：</h3>
+<pre><code>1. 用户未关注时，进行关注后的事件推送
+
+推送XML数据包示例：
+
+&lt;xml&gt;&lt;ToUserName&gt;&lt;![CDATA[toUser]]&gt;&lt;/ToUserName&gt;
+&lt;FromUserName&gt;&lt;![CDATA[FromUser]]&gt;&lt;/FromUserName&gt;
+&lt;CreateTime&gt;123456789&lt;/CreateTime&gt;
+&lt;MsgType&gt;&lt;![CDATA[event]]&gt;&lt;/MsgType&gt;
+&lt;Event&gt;&lt;![CDATA[subscribe]]&gt;&lt;/Event&gt;
+&lt;EventKey&gt;&lt;![CDATA[qrscene_123123]]&gt;&lt;/EventKey&gt;
+&lt;Ticket&gt;&lt;![CDATA[TICKET]]&gt;&lt;/Ticket&gt;
+&lt;/xml&gt;
+参数说明：
+
+参数  描述
+ToUserName  开发者微信号
+FromUserName    发送方帐号（一个OpenID）
+CreateTime  消息创建时间 （整型）
+MsgType 消息类型，event
+Event   事件类型，subscribe
+EventKey    事件KEY值，qrscene_为前缀，后面为二维码的参数值
+Ticket  二维码的ticket，可用来换取二维码图片
+2. 用户已关注时的事件推送
+
+推送XML数据包示例：
+
+&lt;xml&gt;
+&lt;ToUserName&gt;&lt;![CDATA[toUser]]&gt;&lt;/ToUserName&gt;
+&lt;FromUserName&gt;&lt;![CDATA[FromUser]]&gt;&lt;/FromUserName&gt;
+&lt;CreateTime&gt;123456789&lt;/CreateTime&gt;
+&lt;MsgType&gt;&lt;![CDATA[event]]&gt;&lt;/MsgType&gt;
+&lt;Event&gt;&lt;![CDATA[SCAN]]&gt;&lt;/Event&gt;
+&lt;EventKey&gt;&lt;![CDATA[SCENE_VALUE]]&gt;&lt;/EventKey&gt;
+&lt;Ticket&gt;&lt;![CDATA[TICKET]]&gt;&lt;/Ticket&gt;
+&lt;/xml&gt;
+参数说明：
+
+参数  描述
+ToUserName  开发者微信号
+FromUserName    发送方帐号（一个OpenID）
+CreateTime  消息创建时间 （整型）
+MsgType 消息类型，event
+Event   事件类型，SCAN
+EventKey    事件KEY值，是一个32位无符号整数，即创建二维码时的二维码scene_id
+Ticket  二维码的ticket，可用来换取二维码图片
+</code></pre>
+
+<h3>代码示例：</h3>
+<pre><code>  // 接收事件推送并回复
+  public function reponseMsg(){
+    //1.获取到微信推送过来post数据（xml格式）
+    $postArr = $GLOBALS['HTTP_RAW_POST_DATA'];
+
+    //2.处理消息类型，并设置回复类型和内容
+    $postObj = simplexml_load_string( $postArr );
+
+    //判断该数据包是否是订阅的事件推送
+    if( strtolower( $postObj-&gt;MsgType) == 'event'){
+      //带参数的扫码事件
+      if( strtolower($postObj-&gt;Event) == 'scan' ){
+        //临时二维码标记[scene_id]
+        if ($postObj-&gt;EventKey == 19) {
+          $info = $this-&gt;subscriptionWeiXin($postObj);
+          echo $info;
+          exit;
+        }
+        //永久二维码标记[scene_id]
+        if ($postObj-&gt;EventKey == 20) {
+          $info = $this-&gt;subscriptionWeiXin($postObj);
+          echo $info;
+          exit;
+        }
+      }
+    }
+}
+</code></pre>
+
+<p>1</p>
+</body>
+</html>
+<!-- This document was created with MarkdownPad, the Markdown editor for Windows (http://markdownpad.com) -->

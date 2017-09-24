@@ -143,3 +143,7 @@
 	PATCH /collection/resource: 返回完整的资源对象
 
 	DELETE /collection/resource: 返回一个空文档
+
+
+###总结
+>下一篇文章进行RESTFul API实战环节。

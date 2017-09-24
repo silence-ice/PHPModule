@@ -145,3 +145,7 @@
 		}else{
 			return $this->_json($this->_handleArticle());
 		}
+
+###总结
+>RESTFull API大概就了解到这里了，具体代码可以访问下面URL：`https://github.com/silence-ice/PHPModule/blob/master/RestfulApi
+
